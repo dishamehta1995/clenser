@@ -21,7 +21,7 @@
 	<div>
 		<input type="text" value="" id="myInput">
 	</div>
-	<p>	</p>
+	<p></p>
 </body>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script>
@@ -34,6 +34,9 @@ $(function (){
 	  var newStr = newStr.replace("‘", '');
 	  var newStr = newStr.replace('[', '');
 	  var newStr = newStr.replace(']', '');
+	  var newStr = newStr.replace(new RegExp('[\r\n]','g'), ' ');
+	  var newStr = newStr.replace(new RegExp('[\t\r\n]','g'),'');
+	  var newStr = newStr.replace(/\s\s+/g, ' ');
 	  $("p").text(newStr);
 	  $("#myInput").val(newStr);
 	})
