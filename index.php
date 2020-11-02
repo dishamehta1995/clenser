@@ -8,14 +8,19 @@
 	body{color: #fff;background: #111;font-size: 18px; line-height: 1.5;font-family: arial;box-sizing: border-box;}
 	p{text-transform: lowercase;}
 	button{font-size: 16px; padding: 10px 20px; border-radius: 25px;}
-	textarea {width: 100%; min-height: 100px; }
-
+	textarea {width: 100%; min-height: 100px; box-sizing: border-box;}
+	#myInput{visibility: hidden;}
+	button:hover,
+	button:active,
+	button:focus{outline: 0;}
 </style>
 <body>
 	<textarea></textarea>
 	<button class="button">Submit</button>
-	<input type="text" value="Hello World" id="myInput">
-	<button onclick="myFunction()">Copy text</button>
+	<button onclick="myFunction()">Copy text</button>		
+	<div>
+		<input type="text" value="" id="myInput">
+	</div>
 	<p>	</p>
 </body>
 <script type="text/javascript" src="jquery.min.js"></script>
@@ -29,8 +34,17 @@ $(function (){
 	  var newStr = newStr.replace("‘", '');
 	  var newStr = newStr.replace('[', '');
 	  var newStr = newStr.replace(']', '');
-	  $("p").text(newStr);		
+	  $("p").text(newStr);
+	  $("#myInput").val(newStr);
 	})
+	
 });
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
+  document.execCommand("copy");
+  alert("Copied!");
+}
 </script>
 </html>
