@@ -17,7 +17,8 @@
 <body>
 	<textarea></textarea>
 	<button class="button">Submit</button>
-	<button onclick="myFunction()">Copy text</button>		
+	<button onclick="myFunction()">Copy text</button>
+	<button class="clear">clear</button>	
 	<div>
 		<input type="text" value="" id="myInput">
 	</div>
@@ -26,6 +27,9 @@
 <script type="text/javascript" src="jquery.min.js"></script>
 <script>
 $(function (){
+        $('.button').on('click',function(){
+           $(".clear").val("");
+        });
 	$('.button').on('click',function(){
 	  var str = $("textarea").val(); 
 	  var newStr = str.replace(new RegExp('[,.’?!”“:;:@#$%^&*()+={}|"/><~`]', 'g'), '');
